@@ -40,5 +40,68 @@
 // =============================================================================
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
+
+double calculateSum(vector<double> numbers);
+double calculateAverage(vector<double> numbers);
+double findMax(vector<double> numbers);
+double findMin(vector<double> numbers);
+
+int main() {
+    int n;
+    cout << "How many numbers? ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Errors: Please enter a positve number of values." << endl;
+        return 1;
+    }
+
+    vector<double> numbers;
+    for (int i = 0; i < n; i++) {
+        double value;
+        cout << "Enter number " << i + 1 << ": ";
+        cin >> value;
+        numbers.push_back(value);
+    }
+
+    cout << "\nResults:" << endl;
+    cout << "Sum:     " << calculateSum(numbers) << endl;
+    cout << "Average: " << calculateAverage(numbers) << endl;
+    cout << "Maximum: " << findMax(numbers) << endl;
+    cout << "Minimum: " << findMin(numbers) << endl;
+
+    return 0;
+}
+
+double calculateSum(vector<double> numbers) {
+    double total = 0;
+    for (int i = 0; i < numbers.size(); i++) {
+        total += numbers[i];
+    }
+    return total;
+}
+double calculateAverage(vector<double> numbers) {
+    double total = calculateSum(numbers);
+    return total / numbers.size();
+}
+double findMax(vector<double> numbers) {
+    double maxValue = numbers[0];
+    for (int i = 1; i < numbers.size(); i++) {
+        if (numbers[i] > maxValue) {
+            maxValue = numbers[i];
+        }
+    }
+    return maxValue;
+}
+double findMin(vector<double> numbers) {
+    double minValue = numbers[0];
+    for (int i = 1; i < numbers.size(); i++) {
+        if (numbers[i] < minValue) {
+            minValue = numbers[i];
+        }
+    }
+    return minValue;
+}
