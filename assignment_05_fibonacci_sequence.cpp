@@ -51,3 +51,59 @@
 #include <iostream>
 using namespace std;
 
+void printFirstNTerms(int n);
+bool isFibonacciNumber(int number);
+
+int main() {
+    int n;
+    cout << "How many terms? ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Error: Please enter a positive integer for the number of terms." << endl;
+        return 1;
+    }
+
+    printFirstNTerms(n);
+
+    int numberToCheck;
+    cout << "Enter a number to check: ";
+    cin >> numberToCheck;
+
+    if (isFibonacciNumber(numberToCheck)) {
+        cout << numberToCheck << " is a Fibonacci number." << endl;
+    } else {
+        cout << numberToCheck << " is NOT a Fibonacci number." << endl;
+    }
+
+    return 0;
+}
+
+void printFirstNTerms(int n) {
+    int a = 0, b = 1;
+    cout << "Fibonacci sequence: ";
+    for (int i = 0; i < n; i++) {
+        cout << a << " ";
+        int next = a + b;
+        a = b;
+        b = next;
+    }
+    cout << endl;
+}
+
+bool isFibonacciNumber(int number) {
+    if (number < 0) {
+        return false;
+    }
+    int a = 0, b = 1;
+    if (number == a || number == b) {
+        return true;
+    }
+    while (b < number) {
+        int next = a + b;
+        a = b;
+        b = next;
+    }
+    return b == number;
+}
+
