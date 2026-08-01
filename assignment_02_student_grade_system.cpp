@@ -58,7 +58,7 @@ int main() {
     if (score < 0|| score > 100) {
 
         cout << "Error: Score must be betweeen 0 and 100." << endl;
-        return 1; // non-zero return = program ended due to invalid input
+        return 1; 
     }
     char grade = getGrade(score);
 
